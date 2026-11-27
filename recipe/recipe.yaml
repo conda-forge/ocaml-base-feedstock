@@ -21,6 +21,9 @@ package:
 source:
   url: https://github.com/janestreet/base/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 3f3f64789ab25bb5cb7f5f907dd651dec9cc9440981822fe75df6b94344b7208
+  patches:
+    # MSVC rejects __attribute__((unused)) (C2143); keep the stub portable
+    - patches/0001-obj_stubs-drop-gcc-attribute-for-msvc.patch
 
 build:
   number: ${{ build_number }}
